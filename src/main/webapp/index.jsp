@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NexusShop · modern e‑commerce</title>
+  <title>NexusShop · stellar collection</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #f8faff;
-      --primary: #0a2540;
-      --accent: #0077be;
-      --accent-light: #e1f0fa;
-      --muted: #5e6f8d;
+      --bg: #f5f0ff;
+      --primary: #1a0e2e;
+      --accent: #9b59b6;
+      --accent-light: #ede0f5;
+      --accent-glow: #c084d8;
+      --muted: #5e4b6e;
       --card: #ffffff;
-      --shadow: 0 12px 30px rgba(0, 20, 40, 0.06);
-      --radius: 20px;
+      --shadow: 0 12px 30px rgba(80, 40, 120, 0.10);
+      --radius: 24px;
       --container: 1240px;
-
+      --star-color: #f1c40f;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -34,10 +35,10 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(255,255,255,0.85);
+      background: rgba(255, 252, 255, 0.88);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(10,37,64,0.04);
+      border-bottom: 1px solid rgba(155, 89, 182, 0.12);
     }
     .header-inner {
       display: flex;
@@ -54,8 +55,11 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      color: var(--primary);
     }
     .brand .accent { color: var(--accent); }
+    .brand i { color: var(--star-color); font-size: 18px; margin-right: 4px; }
+
     .search-wrap {
       flex: 1 1 240px;
       display: flex;
@@ -63,13 +67,13 @@
       background: white;
       border-radius: 60px;
       padding: 4px 4px 4px 18px;
-      border: 1px solid #e6edf7;
+      border: 1px solid #e6d9f0;
       transition: 0.2s;
       box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
     .search-wrap:focus-within {
       border-color: var(--accent);
-      box-shadow: 0 4px 14px rgba(0,119,190,0.10);
+      box-shadow: 0 4px 16px rgba(155, 89, 182, 0.15);
     }
     .search-wrap input {
       border: 0;
@@ -78,6 +82,7 @@
       font-size: 14px;
       width: 100%;
       outline: none;
+      color: var(--primary);
     }
     .search-wrap button {
       background: var(--accent);
@@ -92,7 +97,7 @@
       align-items: center;
       justify-content: center;
     }
-    .search-wrap button:hover { background: #005f99; }
+    .search-wrap button:hover { background: #7d3c98; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -159,11 +164,12 @@
       font-size: 24px;
       cursor: pointer;
       padding: 0 4px;
+      color: var(--primary);
     }
     #mobileMenu {
       display: none;
       background: white;
-      border-top: 1px solid #eef3fc;
+      border-top: 1px solid #ede0f5;
       padding: 16px 24px;
     }
     #mobileMenu ul {
@@ -179,17 +185,31 @@
       align-items: center;
       gap: 12px;
       padding: 8px 0;
+      color: var(--primary);
     }
 
-    /* hero */
+    /* hero with stars */
     .hero {
-      background: linear-gradient(145deg, #0a2540 0%, #1b3b5c 100%);
+      background: linear-gradient(145deg, #1a0e2e 0%, #2e1a4a 100%);
       color: white;
       padding: 56px 20px;
       border-radius: 0 0 40px 40px;
       margin-bottom: 16px;
       position: relative;
       overflow: hidden;
+    }
+    .hero::before {
+      content: '✦ ✧ ★ ✧ ✦ ✧ ★ ✧ ✦';
+      position: absolute;
+      top: 10%;
+      left: 0;
+      width: 100%;
+      font-size: 60px;
+      letter-spacing: 30px;
+      color: rgba(241, 196, 15, 0.06);
+      white-space: nowrap;
+      pointer-events: none;
+      transform: rotate(-8deg);
     }
     .hero::after {
       content: '';
@@ -198,7 +218,7 @@
       right: -5%;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(0,119,190,0.20), transparent 70%);
+      background: radial-gradient(circle, rgba(155, 89, 182, 0.20), transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -209,6 +229,7 @@
       line-height: 1.2;
       margin-bottom: 12px;
     }
+    .hero h1 i { color: var(--star-color); margin-right: 6px; }
     .hero p {
       font-size: 18px;
       opacity: 0.85;
@@ -231,7 +252,7 @@
       background: var(--accent);
       color: white;
     }
-    .btn-primary:hover { background: #005f99; transform: scale(1.01); }
+    .btn-primary:hover { background: #7d3c98; transform: scale(1.02); }
     .btn-outline-light {
       background: transparent;
       border: 2px solid rgba(255,255,255,0.25);
@@ -246,7 +267,11 @@
       font-weight: 600;
       font-family: 'Poppins', sans-serif;
       margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
+    .section-title i { color: var(--star-color); font-size: 24px; }
     .section-sub { color: var(--muted); margin-bottom: 24px; }
 
     .grid-categories {
@@ -263,11 +288,22 @@
       transition: all 0.2s;
       cursor: pointer;
       border: 1px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .cat-card::after {
+      content: '✦';
+      position: absolute;
+      bottom: -10px;
+      right: -6px;
+      font-size: 40px;
+      color: rgba(241, 196, 15, 0.08);
+      pointer-events: none;
     }
     .cat-card:hover {
       transform: translateY(-6px);
       border-color: var(--accent);
-      box-shadow: 0 18px 36px rgba(0,20,40,0.08);
+      box-shadow: 0 18px 36px rgba(80, 40, 120, 0.12);
     }
     .cat-card .icon { font-size: 32px; color: var(--accent); margin-bottom: 10px; }
     .cat-card h4 { font-size: 15px; font-weight: 600; }
@@ -285,17 +321,28 @@
       transition: 0.2s;
       display: flex;
       flex-direction: column;
-      border: 1px solid #f0f4fd;
+      border: 1px solid #f0e8f8;
+      position: relative;
+    }
+    .product-card::before {
+      content: '★';
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 20px;
+      color: rgba(241, 196, 15, 0.20);
+      z-index: 2;
+      pointer-events: none;
     }
     .product-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,20,40,0.08);
+      box-shadow: 0 20px 40px rgba(80, 40, 120, 0.10);
     }
     .product-card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      background: #f5f9ff;
+      background: #f5f0ff;
       display: block;
     }
     .product-body { padding: 16px 16px 8px; flex: 1; }
@@ -308,9 +355,13 @@
       gap: 8px 12px;
       margin: 6px 0 8px;
     }
-    .price-current { font-weight: 700; font-size: 18px; }
+    .price-current { font-weight: 700; font-size: 18px; color: var(--primary); }
     .price-old { color: var(--muted); text-decoration: line-through; font-size: 14px; }
-    .rating { color: #f7b731; font-size: 14px; }
+    .rating {
+      color: var(--star-color);
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
     .product-footer {
       padding: 8px 16px 16px;
       display: flex;
@@ -333,17 +384,17 @@
       justify-content: center;
       gap: 8px;
     }
-    .add-btn:hover { background: #123a5e; }
+    .add-btn:hover { background: #2e1a4a; }
     .wish-btn {
       background: transparent;
-      border: 1px solid #e3eaf5;
+      border: 1px solid #e6d9f0;
       padding: 10px 14px;
       border-radius: 40px;
       cursor: pointer;
       transition: 0.15s;
       color: var(--muted);
     }
-    .wish-btn:hover { background: #fff0f0; border-color: #ffb3b3; color: #d44; }
+    .wish-btn:hover { background: #fff0f7; border-color: #d4a0c0; color: #b06a9a; }
 
     .deal-block {
       display: flex;
@@ -353,13 +404,14 @@
       overflow: hidden;
       box-shadow: var(--shadow);
       margin-top: 10px;
+      border: 1px solid #f0e8f8;
     }
     .deal-block img {
       width: 100%;
       max-width: 380px;
       object-fit: cover;
       min-height: 220px;
-      background: #eaf0f9;
+      background: #ede0f5;
     }
     .deal-content { padding: 32px 28px; flex: 1; }
     .timer {
@@ -379,7 +431,7 @@
     .time-box span { font-size: 20px; font-weight: 700; display: block; }
     .time-box small { font-size: 11px; opacity: 0.7; }
     .discount-badge {
-      background: #ff4757;
+      background: #e74c3c;
       color: white;
       padding: 6px 14px;
       border-radius: 40px;
@@ -400,9 +452,10 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       flex-shrink: 0;
+      border: 1px solid #f0e8f8;
     }
-    .testimonial-card .rating { margin-bottom: 6px; }
-    .testimonial-card p { font-size: 15px; margin: 8px 0 12px; color: #1e2f44; }
+    .testimonial-card .rating { color: var(--star-color); font-size: 16px; margin-bottom: 6px; }
+    .testimonial-card p { font-size: 15px; margin: 8px 0 12px; color: #1e0e2e; }
     .avatar-row {
       display: flex;
       align-items: center;
@@ -413,23 +466,37 @@
       height: 44px;
       border-radius: 50%;
       object-fit: cover;
-      background: #dbe4f0;
+      background: #ede0f5;
     }
 
     .newsletter-box {
-      background: var(--primary);
+      background: linear-gradient(145deg, #1a0e2e, #2e1a4a);
       color: white;
       border-radius: var(--radius);
       padding: 40px 32px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter-box::before {
+      content: '✦ ✧ ★ ✧ ✦';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      font-size: 80px;
+      color: rgba(241, 196, 15, 0.05);
+      pointer-events: none;
     }
     .newsletter-box h3 { font-family: 'Poppins', sans-serif; font-size: 26px; margin-bottom: 6px; }
+    .newsletter-box h3 i { color: var(--star-color); margin-right: 8px; }
     .newsletter-form {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 18px;
+      position: relative;
+      z-index: 2;
     }
     .newsletter-form input {
       padding: 14px 20px;
@@ -449,11 +516,11 @@
       cursor: pointer;
       transition: 0.15s;
     }
-    .newsletter-form button:hover { background: #005f99; }
+    .newsletter-form button:hover { background: #7d3c98; }
 
     footer {
       padding: 40px 0 20px;
-      border-top: 1px solid #edf2fa;
+      border-top: 1px solid #ede0f5;
       margin-top: 12px;
       color: var(--muted);
       font-size: 14px;
@@ -496,7 +563,7 @@
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      background: #0a2540;
+      background: #1a0e2e;
       color: white;
       padding: 14px 28px;
       border-radius: 60px;
@@ -506,11 +573,14 @@
       opacity: 0;
       transition: opacity 0.3s ease, transform 0.2s;
       pointer-events: none;
+      border: 1px solid rgba(241, 196, 15, 0.15);
     }
+    .toast i { color: var(--star-color); margin-right: 8px; }
     .toast.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
+    .star-icon { color: var(--star-color); }
   </style>
 </head>
 <body>
@@ -519,7 +589,7 @@
   <div class="container header-inner">
     <div style="display:flex;align-items:center;gap:12px;">
       <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
-      <a class="brand" href="#">Nexus<span class="accent">Shop</span></a>
+      <a class="brand" href="#"><i class="fas fa-star"></i>Nexus<span class="accent">Shop</span></a>
     </div>
     <ul class="nav-links" id="mainNav">
       <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
@@ -549,7 +619,7 @@
 
   <div class="container" style="padding-bottom:12px;">
     <div class="search-wrap" role="search">
-      <input type="text" id="searchInput" placeholder="Search for products, brands..." aria-label="Search">
+      <input type="text" id="searchInput" placeholder="Search products, brands..." aria-label="Search">
       <button id="searchBtn" aria-label="Submit search"><i class="fas fa-arrow-right"></i></button>
     </div>
   </div>
@@ -558,7 +628,7 @@
 <main>
   <section class="hero">
     <div class="container hero-content">
-      <h1>New arrivals · winter collection</h1>
+      <h1><i class="fas fa-star"></i> New arrivals · winter collection</h1>
       <p>Discover premium electronics, fashion & accessories — curated for you.</p>
       <div class="btn-group">
         <button class="btn btn-primary" id="shopNow">Shop now <i class="fas fa-arrow-right"></i></button>
@@ -568,24 +638,24 @@
   </section>
 
   <section class="section container" id="categories">
-    <h2 class="section-title">Shop by category</h2>
+    <h2 class="section-title"><i class="fas fa-star"></i> Shop by category</h2>
     <p class="section-sub">Browse curated collections</p>
     <div class="grid-categories" id="categoriesGrid"></div>
   </section>
 
   <section class="section container" id="products">
-    <h2 class="section-title">Trending now</h2>
+    <h2 class="section-title"><i class="fas fa-star"></i> Trending now</h2>
     <p class="section-sub">Popular picks based on recent activity</p>
     <div class="grid-products" id="productsGrid"></div>
   </section>
 
   <section class="section container" id="deals">
-    <h2 class="section-title">Flash sale</h2>
+    <h2 class="section-title"><i class="fas fa-star"></i> Flash sale</h2>
     <p class="section-sub">Limited time offers</p>
     <div class="deal-block">
       <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="MacBook Air M2" loading="lazy">
       <div class="deal-content">
-        <h3>MacBook Air M2</h3>
+        <h3>MacBook Air M2 <i class="fas fa-star" style="color:var(--star-color); font-size:18px;"></i></h3>
         <p class="muted">Thin, light, and powerful — now with M2 performance.</p>
         <div class="timer" id="dealTimer">
           <div class="time-box"><span id="dealDays">0</span><small>days</small></div>
@@ -605,7 +675,7 @@
   </section>
 
   <section class="section container" id="testimonials">
-    <h2 class="section-title">What customers say</h2>
+    <h2 class="section-title"><i class="fas fa-star"></i> What customers say</h2>
     <p class="section-sub">Real reviews from verified buyers</p>
     <div class="testimonials-scroll" id="testimonialsContainer">
       <div class="testimonial-card">
@@ -637,7 +707,7 @@
 
   <section class="section container">
     <div class="newsletter-box">
-      <h3>Stay in the loop</h3>
+      <h3><i class="fas fa-star"></i> Stay in the loop</h3>
       <p>Subscribe for exclusive offers &amp; first access</p>
       <form class="newsletter-form" id="newsletterForm">
         <input type="email" id="newsletterEmail" placeholder="Your email address" required>
@@ -651,7 +721,7 @@
 <footer>
   <div class="container footer-grid">
     <div>
-      <div style="font-weight:700; font-size:20px;">NexusShop</div>
+      <div style="font-weight:700; font-size:20px;"><i class="fas fa-star" style="color:var(--star-color); margin-right:6px;"></i>NexusShop</div>
       <p class="muted" style="max-width:260px; margin-top:8px;">Modern e‑commerce demo · built with care.</p>
       <div style="display:flex; gap:12px; margin-top:12px;">
         <a href="#" class="icon-btn"><i class="fab fa-facebook"></i></a>
@@ -664,10 +734,10 @@
       <div><strong>Support</strong> Help Center<br>Shipping &amp; returns<br>Contact</div>
     </div>
   </div>
-  <div style="text-align:center; margin-top:28px; color:var(--muted); font-size:13px;">&copy; <span id="year"></span> NexusShop. All rights reserved.</div>
+  <div style="text-align:center; margin-top:28px; color:var(--muted); font-size:13px;">&copy; <span id="year"></span> NexusShop. All rights reserved. <i class="fas fa-star" style="color:var(--star-color); margin-left:6px;"></i></div>
 </footer>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast"><i class="fas fa-star"></i> <span id="toastMsg"></span></div>
 
 <script>
   // ----- data -----
@@ -703,89 +773,4 @@
   let cartCount = 0;
   const cartEl = document.getElementById('cartCount');
   const searchInput = document.getElementById('searchInput');
-  const productsGrid = document.getElementById('productsGrid');
-  const categoriesGrid = document.getElementById('categoriesGrid');
-  const toast = document.getElementById('toast');
-
-  function showToast(msg) {
-    toast.textContent = msg;
-    toast.classList.add('show');
-    clearTimeout(toast._hide);
-    toast._hide = setTimeout(() => toast.classList.remove('show'), 2200);
-  }
-
-  // ----- render -----
-  function renderCategories() {
-    categoriesGrid.innerHTML = '';
-    CATEGORIES.forEach(c => {
-      const div = document.createElement('div');
-      div.className = 'cat-card';
-      div.innerHTML = `<div class="icon"><i class="fas ${c.icon}"></i></div><h4>${c.name}</h4>`;
-      div.addEventListener('click', () => {
-        searchInput.value = c.name;
-        filterProducts(c.name);
-        document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-      categoriesGrid.appendChild(div);
-    });
-  }
-
-  function renderProducts(list) {
-    productsGrid.innerHTML = '';
-    list.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      const badgeHtml = p.badge ? `<span style="background:${p.badge.startsWith('-') ? '#ff4757' : '#28a745'}; color:white; padding:4px 12px; border-radius:40px; font-size:12px; font-weight:700; display:inline-block; margin-bottom:6px;">${p.badge}</span>` : '';
-      const stars = '★'.repeat(Math.round(p.rating)) + '☆'.repeat(5 - Math.round(p.rating));
-      card.innerHTML = `
-        <img src="${p.img}" alt="${p.title}" loading="lazy">
-        <div class="product-body">
-          <h5>${p.title}</h5>
-          <div class="product-meta">${p.category}</div>
-          ${badgeHtml}
-          <div class="price-row">
-            <span class="price-current">$${p.price.toLocaleString()}</span>
-            ${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toLocaleString()}</span>` : ''}
-            <span class="rating">${stars} <span style="color:var(--muted); font-size:12px;">(${p.reviews})</span></span>
-          </div>
-        </div>
-        <div class="product-footer">
-          <button class="add-btn" data-id="${p.id}"><i class="fas fa-cart-plus"></i> Add</button>
-          <button class="wish-btn" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-        </div>
-      `;
-      productsGrid.appendChild(card);
-    });
-
-    document.querySelectorAll('.add-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = Number(btn.dataset.id);
-        addToCart(id, btn);
-      });
-    });
-  }
-
-  function filterProducts(query) {
-    const q = query.trim().toLowerCase();
-    if (!q) { renderProducts(PRODUCTS); return; }
-    const filtered = PRODUCTS.filter(p => p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
-    renderProducts(filtered);
-  }
-
-  // ----- cart -----
-  function addToCart(id, btn) {
-    const product = PRODUCTS.find(p => p.id === id);
-    if (!product) return;
-    cartCount++;
-    cartEl.textContent = cartCount;
-    if (btn) {
-      const orig = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-check"></i> Added';
-      btn.style.background = '#28a745';
-      setTimeout(() => {
-        btn.innerHTML = orig;
-        btn.style.background = '';
-      }, 1200);
-    }
-    showToast(`🛒 ${product.title} added to cart`);
-  }
+  const productsGrid = document
