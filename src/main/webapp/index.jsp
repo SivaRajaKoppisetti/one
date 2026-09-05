@@ -18,6 +18,7 @@
       --shadow: 0 12px 30px rgba(0, 20, 40, 0.06);
       --radius: 20px;
       --container: 1240px;
+
     }
     html { scroll-behavior: smooth; }
     body {
